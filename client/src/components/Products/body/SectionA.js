@@ -1,0 +1,113 @@
+import React, { useState } from 'react'
+import { BiCalendarAlt, BiComment, BiHeart, BiUser } from 'react-icons/bi'
+
+
+const SectionA = (props) => {
+  {/* eslint-disable jsx-a11y/anchor-is-valid */ }
+  // const picget = require(`../../../images/${pic}`)
+  //   console.log(pic)
+  const [picture, setPicture] = useState("")
+  let state = props.state
+  let Click = props.setState
+  let pics = props.image[0]
+  function change() {
+
+    if (state) {
+      if (pics) {
+
+
+        setPicture(require(`../../../images/dynamic/${pics}`))
+        document.getElementById('images').style.backgroundImage = `url(${picture})`
+      }
+    }
+
+  }
+  const getDate = new Date(props.date).toLocaleString()
+
+
+  return (
+    <div>
+
+
+
+      {
+        (function () {
+          if (state) {
+
+
+            return <section id="images" className="wrapper image-wrapper bg-image bg-overlay text-white" onDoubleClick={Click} style={{
+              backgroundImage: `url(${require(`../../../images/dynamic/${pics}`)})`
+            }
+            } >
+              < div className="container pt-18 pb-15 pt-md-20 pb-md-19 text-center" >
+                <div className="row">
+                  <div className="col-md-10 col-xl-8 mx-auto">
+                    <div className="post-header">
+                      <div className="post-category text-line text-white">
+                        <a href="https://sandbox.elemisthemes.com/blog-post2.html#" className="text-reset" rel="category">Teamwork</a>
+                      </div>
+                      {/* <!-- /.post-category --> */}
+                      <h1 className="display-1 mb-4 text-white">{props.title}</h1>
+                      <ul className="post-meta text-white">
+                        <li className="post-date"><i className="uil "><BiCalendarAlt /></i><span>{getDate}</span></li>
+                        <li className="post-author"><i className="uil"><BiUser /></i><a href="https://sandbox.elemisthemes.com/blog-post2.html#" className="text-reset"><span>By {props.author} </span></a></li>
+                        <li className="post-comments"><i className="uil"><BiComment /></i><a href="https://sandbox.elemisthemes.com/blog-post2.html#" className="text-reset">3<span> Comments</span></a></li>
+                        <li className="post-likes"><i className="uil"><BiHeart /></i><a href="https://sandbox.elemisthemes.com/blog-post2.html#" className="text-reset">3<span> Likes</span></a></li>
+                      </ul>
+                      {/* <!-- /.post-meta --> */}
+                    </div>
+                    {/* <!-- /.post-header --> */}
+                  </div>
+                  {/* <!-- /column --> */}
+                </div>
+                {/* <!-- /.row --> */}
+              </div>
+              {/* <!-- /.container --> */}
+            </section >
+          } else {
+            return <section id='images' className="wrapper image-wrapper bg-image bg-overlay text-white" onDoubleClick={Click}  >
+              < div className="container pt-18 pb-15 pt-md-20 pb-md-19 text-center" >
+                <div className="row">
+                  <div className="col-md-10 col-xl-8 mx-auto">
+                    <div className="post-header">
+                      <div className="post-category text-line text-white">
+                        <label htmlFor='files'><div class="icon-div">
+                          <div className="icon">
+                            + pic
+                          </div>
+                        </div></label>
+                        <input type='file' id='files' name='files' style={{ display: 'none' }} />
+                        <input value='Teamwork' />
+                      </div>
+                      {/* <!-- /.post-category --> */}
+
+                      <h1 className="display-1 mb-4 text-white">
+                        <input value={props.title} /></h1>
+                      <ul className="post-meta text-white">
+                        <li className="post-date"><i className="uil "><BiCalendarAlt /></i><span>{getDate}</span></li>
+                        <li className="post-author"> <span><input value={props.author} /></span> </li>
+                        <li className="post-comments"><i className="uil"><BiComment /></i><a href="https://sandbox.elemisthemes.com/blog-post2.html#" className="text-reset">3<span> Comments</span></a></li>
+                        <li className="post-likes"><i className="uil"><BiHeart /></i><a href="https://sandbox.elemisthemes.com/blog-post2.html#" className="text-reset">3<span> Likes</span></a></li>
+                      </ul>
+                      {/* <!-- /.post-meta --> */}
+                    </div>
+                    {/* <!-- /.post-header --> */}
+                  </div>
+                  {/* <!-- /column --> */}
+                </div>
+                {/* <!-- /.row --> */}
+              </div>
+              {/* <!-- /.container --> */}
+            </section >
+          }
+
+        }
+        )(props.state)}
+
+
+
+    </div >
+  )
+}
+
+export default SectionA
