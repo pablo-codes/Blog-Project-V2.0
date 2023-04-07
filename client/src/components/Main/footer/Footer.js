@@ -2,8 +2,18 @@ import React from 'react'
 import { BsDribbble, BsFacebook, BsInstagram, BsTwitter, BsYoutube } from 'react-icons/bs'
 
 const Footer = () => {
+  // const vanish = () => {
+  //   document.getElementById('side-bar').style.display = 'none'
+  //   document.getElementById('side-body').style.display = 'none'
+  // }
+
+  // const bring = () => {
+
+  //   document.getElementById('side-bar').style.display = 'block'
+  //   document.getElementById('side-body').style.display = 'block'
+  // }
   return (
-    <footer className="bg-navy text-inverse">
+    <footer className="bg-navy text-inverse" >
       <div className="container pt-15 pt-md-17 pb-13 pb-md-15">
         <div className="d-lg-flex flex-row align-items-lg-center">
           <h3

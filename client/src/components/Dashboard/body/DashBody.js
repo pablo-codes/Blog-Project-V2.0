@@ -69,7 +69,7 @@ const DashBody = () => {
                                 </div>
                                 <div className="profile_info">{(function () {
                                     if (!Details.user.image) {
-                                        return <div class="avatar-xs"><span class="avatar-title rounded-circle bg-soft-primary text-primary">{Details.avatar}</span></div>
+                                        return <div className="avatar-xs"><span className="avatar-title rounded-circle bg-soft-primary text-primary">{Details.avatar}</span></div>
 
                                     } else {
                                         return <img src={Details.user.image} />
@@ -105,7 +105,7 @@ const DashBody = () => {
                                                 <div className="single_quick_activity">
                                                     <h4>Total Blogs</h4>
                                                     <h3><span className="counter">{Details.total}</span></h3>
-                                                    <div class="icon-div" style={{ position: "relative", left: "40%" }}>
+                                                    <div className="icon-div" style={{ position: "relative", left: "40%" }}>
                                                         <div className="icon">
                                                             +
                                                         </div>
@@ -114,7 +114,7 @@ const DashBody = () => {
                                                 <div className="single_quick_activity">
                                                     <h4>Total Images</h4>
                                                     <h3> <span className="counter">{Details.images}</span></h3>
-                                                    <div class="icon-div" style={{ position: "relative", left: "40%" }}>
+                                                    <div className="icon-div" style={{ position: "relative", left: "40%" }}>
                                                         <div className="icon">
                                                             +
                                                         </div>

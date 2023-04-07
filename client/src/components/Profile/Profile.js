@@ -5,7 +5,7 @@ import { Navigate, redirect, useNavigate } from 'react-router-dom'
 import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai'
 import { RiPencilFill } from 'react-icons/ri'
 import indexService from '../../services/indexService'
-
+import axios from 'axios'
 
 const Profile = () => {
     let initialDetails = {
@@ -15,6 +15,8 @@ const Profile = () => {
         id: "",
         username: "",
         password: "",
+        image: "",
+        avatar: ""
     }
 
     const navigate = useNavigate()
@@ -28,17 +30,17 @@ const Profile = () => {
 
     const [user, setUser] = useState(initialUser)
 
+    const [avatars, setAvatar] = useState(initialUser.avatar)
+    const [file, setfile] = useState(user.image)
 
-    const [file, setfile] = useState(initialUser.image)
 
 
-    const id = user.id
     const responses = (id) => {
         indexService.edit(id)
             .then((response) => {
                 setUser(response.data)
-                console.log(user)
-                console.log(response.data)
+                setAvatar(response.data.avatar)
+                setfile(response.data.image)
             })
             .catch(e => {
                 console.log(e);
@@ -47,8 +49,8 @@ const Profile = () => {
 
     useEffect(() => {
 
-        responses(id)
-    }, [id])
+        responses(cookies.token)
+    }, [cookies.token])
     useEffect(() => {
         (() => {
             if (file) {
@@ -91,20 +93,30 @@ const Profile = () => {
 
             event.preventDefault();
             console.log(Details.files)
-            indexService.profile(id, file)
+            const formData = new FormData();
+            formData.append("file", Details.files);
+            formData.append("upload_preset", "sYmb@l1C");
 
-            navigate("/dashboard")
-            // indexService.update(id, user).then((response) => {
-            //     const data = response.data
+            axios.post(`https://api.cloudinary.com/v1_1/dyevylpk8/image/upload`, formData).then((response) => {
+                if (response.data.secure_url) {
+                    const oldurl = response.data.secure_url
+                    const newurl = oldurl.split(".j")
+                    const url = newurl[0] + ".png"
+                    setUser({ ...user, ['image']: url })
+                    indexService.update(cookies.token, { user: user, url: url }).then((response) => {
+                        navigate('/dashboard')
+                    }).catch((error) => {
+                        console.log(error)
+                    })
 
-
-
-
-            // }).catch(
-            //     err => {
-            //         console.log(err)
-            //     }
-            // )
+                    console.log(user)
+                    console.log(url);
+                }
+            })
+                .catch((error) => {
+                    console.log(error);
+                });
+            ;
         }
 
     return (
@@ -121,11 +133,20 @@ const Profile = () => {
                     <div className="MuiBox-root css-1y8ugea" >
 
                         <div
-                            className="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-1999axt-MuiAvatar-root" id="img" style={{ width: "280px", height: "280px", backgroundColor: "lightblue", backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: '120%' }}
+                            className="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-1999axt-MuiAvatar-root" id="img" style={{ width: "280px", height: "280px", backgroundColor: "lightblue", backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: '280px,280px' }}
 
                         ><h1 className="MuiTypography-root MuiTypography-h5 css-ag7rrr-MuiTypography-root"
                             style={{ position: "relative", left: "16%", fontSize: "100%" }}>
-                                F
+
+                                {(function () {
+
+                                    if (!file) {
+                                        return avatars
+
+                                    } else {
+
+                                    }
+                                })(file)}
                             </h1>
 
                             <input type='file' id='files' accept='image/*' onChange={handleImageChange} name='files' style={{ display: 'none' }} />

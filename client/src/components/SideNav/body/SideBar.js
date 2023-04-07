@@ -3,7 +3,7 @@ import { CiSettings } from 'react-icons/ci'
 import { RiSettings2Fill, RiContactsBook2Fill, RiBookFill, RiPagesFill, RiSettingsFill, RiImageFill, RiUser2Fill, RiUserFill } from 'react-icons/ri'
 const SideBar = () => {
     return (
-        <div className="side-menu flex-lg-column me-lg-1 ms-lg-0" style={{
+        <div className="side-menu flex-lg-column me-lg-1 ms-lg-0" id='side-bar' style={{
             marginTop: "5%", position: "fixed"
         }}>
 

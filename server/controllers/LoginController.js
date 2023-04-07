@@ -62,7 +62,8 @@ const registerUser = async (req, res) => {
             username: body.username,
             password: encryptedUserPassword,
             role: "Admin",
-            email: body.email
+            email: body.email,
+            image: ""
           });
 
 
@@ -96,7 +97,8 @@ const registerUser = async (req, res) => {
             username: body.username,
             password: encryptedUserPassword,
             role: "User",
-            email: body.email
+            email: body.email,
+            image: ""
           });
 
 
@@ -210,8 +212,29 @@ const loginUser = async (req, res, next) => {
 
 }
 
+const updateUser = async (req, res) => {
+  try {
+    const users = req.params.id
+    const { username, } = req.body.user
+    console.log(req.body)
+    const topics = await user.findOneAndUpdate({ token: users }, { username: username, image: req.body.url })
 
 
 
 
-module.exports = { register, login, registerUser, loginUser };
+    res.send('updated');
+
+
+  } catch (error) {
+    console.log(error)
+
+    res.send("login")
+  }
+
+}
+
+
+
+
+
+module.exports = { register, login, registerUser, loginUser, updateUser };

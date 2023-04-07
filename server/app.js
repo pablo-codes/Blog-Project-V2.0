@@ -12,9 +12,9 @@ const cors = require('cors')
 const auth = require('./middleware/auth')
 const adminauth = require('./middleware/adminauth')
 
-const { index, allTopics, getTopic, allImages, addTopic, getImages, updateTopic, deleteTopicAndImages, searchImages, searchTopics, addImage, getALLImages, updateImage, deleteImage, allBlogs, editUser, updateUser } = require('./controllers/Usercontroller')
+const { index, allTopics, getTopic, allImages, addTopic, getImages, updateTopic, deleteTopicAndImages, searchImages, searchTopics, addImage, getALLImages, updateImage, deleteImage, allBlogs, editUser, } = require('./controllers/Usercontroller')
 const { admin, admins, users, allAdminImages, allAdminTopics, deleteUserTopicAndImages, searchUser, searchAdmin } = require('./controllers/Admincontroller')
-const { login, register, registerUser, loginUser } = require("./controllers/LoginController")
+const { login, register, registerUser, loginUser, updateUser } = require("./controllers/LoginController")
 const { Profile } = require("./controllers/ImageController");
 const { profile } = require("console");
 
@@ -74,7 +74,7 @@ app.set("view engine", ".hbs");
 //  Routes
 app.get("/index/:id", index);
 app.get("/edit-user/:id", editUser);
-app.get("/update-user/:id", updateUser);
+app.put("/update-user/:id", updateUser);
 app.post("/profile/:id", profile)
 
 app.get('/admin', adminauth, admin)

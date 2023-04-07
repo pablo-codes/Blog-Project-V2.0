@@ -69,7 +69,7 @@ const NavBar = (props) => {
 
                         return <Link to={"/products/" + el._id}>
                           <li className="col">
-                            <figure className="rounded lift d-none d-lg-block"><img style={{ width: "70%", height: "70%" }} src={require(`../../../images/dynamic/${el.gridfilename[0]}`)} alt="" /></figure>
+                            <figure style={{ width: '70px', height: '70px' }} className="rounded lift d-none d-lg-block"><img sizes='120%' src={require(`../../../images/dynamic/${el.gridfilename[0]}`)} alt="" /></figure>
                             <span className="d-lg">{el.title}</span>
                           </li>
                         </Link>

@@ -54,7 +54,7 @@ const SignIn = () => {
             if (Details.email && Details.password) {
                 blogService.loginUser(Details).then((response) => {
                     const data = response.data
-                    console.log(data)
+
                     if (data) {
                         var today = Date()
                         var tomorrow = new Date()

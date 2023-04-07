@@ -44,12 +44,15 @@ const editUser = async (req, res) => {
 
         const topics = await user.findOne({ token: users })
 
-
+        const username = topics.username.toUpperCase()
+        const spliced = username.slice(0, 1)
 
         const all = {
             username: topics.username,
             id: topics._id,
-            password: "12345"
+            password: "12345",
+            avatar: spliced,
+            image: topics.image
         }
         res.send(all);
 
@@ -57,30 +60,12 @@ const editUser = async (req, res) => {
     } catch (error) {
         console.log(error)
 
-        res.send("login")
+
     }
 
 }
 
-const updateUser = async (req, res) => {
-    try {
-        const users = req.params.id
 
-        const topics = await user.findOneAndUpdate({ token: users }, req.body, { useFindAndModify: false })
-
-
-
-
-        res.send('updated');
-
-
-    } catch (error) {
-        console.log(error)
-
-        res.send("login")
-    }
-
-}
 
 // Get's all topics related to user
 const allTopics = async (req, res, next) => {
@@ -614,4 +599,4 @@ const searchImages = async (req, res) => {
     }
 
 }
-module.exports = { index, allTopics, getTopic, allImages, addTopic, addImage, getImages, getALLImages, updateImage, updateTopic, deleteTopicAndImages, deleteImage, searchImages, searchTopics, allBlogs, editUser, updateUser }
+module.exports = { index, allTopics, getTopic, allImages, addTopic, addImage, getImages, getALLImages, updateImage, updateTopic, deleteTopicAndImages, deleteImage, searchImages, searchTopics, allBlogs, editUser }

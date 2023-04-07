@@ -111,9 +111,11 @@ const func = () => {
             <div className="card" style={{ backgroundColor: "black" }}>
                 <div className="card-body">
                     <img className="rounded-circle w-15 mb-4" src={require("../../images/static/waya.jpg")} srcSet="./assets/img/avatars/te1@2x.jpg 2x" alt='' />
-                    <h4 className="mb-1" style={{ color: "gold" }}>waya made it</h4>
-                    <div className="meta mb-2">Designs and makes all kinds of outfits and wears</div>
-                    <p className="mb-2" style={{ color: "gold" }}>...Simply the best</p>
+                    <div style={{ position: "relative", left: "33%", display: "inline", width: "20%" }}><img className="rounded-circle w-15 " src={require("../../images/static/shit.jpeg")} srcSet="./assets/img/avatars/te1@2x.jpg 2x" alt='' />
+                        <h4 className="mb-1" style={{ color: "gold", fontStyle: "italic", fontFamily: "serif", display: "flex", position: "relative", left: "5%", clear: "left" }}>waya made it</h4></div>
+
+                    <div className="meta mb-2" >Designs and makes all kinds of outfits and wears</div>
+                    <p className="mb-2" style={{ color: "gold", fontStyle: "italic", fontFamily: "san-serif", }}>...Simply the best</p>
                     <nav className="nav social mb-0">
                         <a href="http://twitter.com"><i className="uil " style={{ color: "gold" }}><BsInstagram color='pink' /> Waya_made_it</i></a>
                         <a href="http://facebook.com"><i className="uil " style={{ color: "gold" }}><BsWhatsapp color='green' /> +234 812 054 5793</i></a>

@@ -20,6 +20,8 @@ import Dashboard from "./components/Dashboard/Dashboard";
 
 import SideNav from "./components/SideNav/SideNav";
 import Profile from "./components/Profile/Profile";
+import ProductList from "./components/Products/ProductList";
+import Create from "./components/Create/Create";
 
 
 
@@ -35,11 +37,12 @@ function App() {
         <Route path="/" element={<Main />}>
           <Route index element={<BodyIndex />} />
           <Route path="/about" element={<About />} />
-
+          <Route path="/create" element={<Create />} />
           <Route path="/products/:id" element={<ProductWrap />} />
-
+          <Route path="/products" element={<ProductList />} />
         </Route>
         <Route path="/dashboard" element={<Dashboard />} />
+
         <Route path="/topics" element={<SideNav />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />

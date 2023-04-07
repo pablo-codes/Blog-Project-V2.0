@@ -6,11 +6,9 @@ const index = (id) => {
 const edit = (id) => {
     return http.get(`/edit-user/${id}`)
 }
-const update = (id) => {
-    return http.get(`/update-user/${id}`)
+const update = (id, data) => {
+    return http.put(`/update-user/${id}`, data)
 }
-const profile = (id, data) => {
-    return http.post(`/profile/${id}`, data)
-}
-const indexService = { index, edit, update, profile }
+
+const indexService = { index, edit, update }
 export default indexService

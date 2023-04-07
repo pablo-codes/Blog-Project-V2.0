@@ -1329,6 +1329,50 @@
     height: calc(100vh - 324px);
   }
 }
+@media (min-width: 1006px) and (max-width: 1200px) {
+  .user-chat {
+    overflow-y: visible;
+    width: 90%;
+    position: relative;
+    left: 5%;
+    margin-left: 2.5%;
+    margin-right: 5%;
+  }
+}
+
+@media (min-width: 991px) and (max-width: 999px) {
+  .user-chat {
+    overflow-y: visible;
+    width: 90%;
+    position: relative;
+    left: 7%;
+    margin-left: 2.5%;
+    margin-right: 5%;
+  }
+}
+
+@media (min-width: 500px) and (max-width: 991px) {
+  .user-chat {
+    overflow-y: visible;
+    width: 100%;
+    position: relative;
+    left: 0%;
+    margin-left: 2.5%;
+    margin-right: 5%;
+  }
+}
+
+@media (min-width: 1201px) {
+  .user-chat {
+    overflow-y: visible;
+    width: 70%;
+    position: relative;
+    left: 29%;
+    margin-left: 2.5%;
+    margin-right: 5%;
+  }
+}
+
 .auth-logo .logo {
   margin: 0 auto;
 }
