@@ -1,4 +1,5 @@
 const express = require("express");
+const http = require('http')
 const app = express();
 const mongoose = require("mongoose")
 const exphbs = require("express-handlebars");
@@ -19,6 +20,8 @@ const { Profile } = require("./controllers/ImageController");
 const { profile } = require("console");
 
 const upload = multer({ dest: path.join(__dirname, '../files') })
+
+
 dotenv.config({ path: path.join(__dirname, './config.env') })
 
 
@@ -27,11 +30,7 @@ dotenv.config({ path: path.join(__dirname, './config.env') })
 
 
 
-
-
-
-
-mongoose.connect("mongodb://127.0.0.1:27017/blogsystemNG").then(() => {
+mongoose.connect(process.env.MONGO).then(() => {
   console.log("DB Connected Successfully")
 }).catch((err) => {
   console.log("connection failed")
@@ -40,7 +39,7 @@ mongoose.connect("mongodb://127.0.0.1:27017/blogsystemNG").then(() => {
 
 
 
-var corsOptions = {
+const corsOptions = {
   origin: ['http://localhost:3001', 'http://localhost:3000'],
   credentials: true,
   optionSuccessStatus: 200

@@ -45,7 +45,7 @@ const Main = (props) => {
 
         <HeaderIndex />
         <Outlet />
-        <FooterIndex />
+        {/* <FooterIndex /> */}
       </div>
 
     </div>

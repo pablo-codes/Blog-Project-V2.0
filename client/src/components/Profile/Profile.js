@@ -54,6 +54,7 @@ const Profile = () => {
     useEffect(() => {
         (() => {
             if (file) {
+                console.log(Details.files)
                 document.getElementById('img').style.backgroundImage = `url(${file})`
             }
         })()

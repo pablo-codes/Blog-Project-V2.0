@@ -1,7 +1,7 @@
 import React from 'react'
 
 import './About.css'
-import './AboutPlugins.css'
+// import './AboutPlugins.css'
 import '../../css/font.css'
 import SectionA from './body/SectionA'
 import SectionB from './body/SectionB'

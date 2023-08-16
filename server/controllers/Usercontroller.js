@@ -1,4 +1,3 @@
-
 const fs = require("fs");
 const jwt = require('jsonwebtoken')
 const path = require('path')
@@ -68,6 +67,7 @@ const editUser = async (req, res) => {
 
 
 // Get's all topics related to user
+
 const allTopics = async (req, res, next) => {
     try {
         const id = req.cookies.user
@@ -128,23 +128,15 @@ const allTopics = async (req, res, next) => {
         if (news <= nextnew) {
 
             fill = arr.map((el) => { return { num: el } })
-
-
-            res.render("all-topics", { all, fill, sum, page });
+            res.send({ all, fill, sum, page });
         } else if (news > nextnew) {
             fill = arr.map((el) => { return { num: 1 } })
 
-            res.render("all-topics", { all, fill, sum, page });
+            res.send({ all, fill, sum, page });
         }
         else {
             res.send('page does not exist')
         }
-
-
-
-
-
-
 
     } catch (error) {
         console.log(error)
@@ -279,11 +271,11 @@ const allImages = async (req, res) => {
 
             fill = arr.map((el) => { return { num: el } })
 
-            res.render("all-images", { all, fill, sum, page });
+            res.send({ all, fill, sum, page });
         } else if (news > nextnew) {
             fill = arr.map((el) => { return { num: 1 } })
 
-            res.render("all-images", { all, fill, sum, page });
+            res.send({ all, fill, sum, page });
         }
         else {
             res.send('page does not exist')

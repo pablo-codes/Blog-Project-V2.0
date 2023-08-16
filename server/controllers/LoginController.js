@@ -25,6 +25,8 @@ const login = async (req, res) => {
 
 }
 
+
+
 // Creates a user
 const registerUser = async (req, res) => {
   try {

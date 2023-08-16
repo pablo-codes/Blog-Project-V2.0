@@ -37,9 +37,7 @@
   display: inline-block;
   border-bottom: 1px dotted black;
 }
-li {
-  text-decoration: underline;
-}
+
 .tooltiptext::after {
   content: " ";
   position: absolute;
@@ -51,31 +49,149 @@ li {
   border-color: transparent transparent transparent black;
 } */
 
-.tooltip:hover .tooltiptext {
-  visibility: visible;
+li {
+  margin-left: 5%;
+  text-decoration: dotted;
 }
-*/ .popup-content {
-  margin: auto;
-  background-color: black;
-  width: 50%;
-  padding: 5px;
-}
-.popup-arrow {
-  color: rgb(255, 255, 255);
-  content: " ";
-  position: absolute;
-  top: 50%;
-  left: 100%; /* To the right of the tooltip */
-  margin-top: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: transparent transparent transparent black;
-}
+
 [role="tooltip"].popup-content {
   width: 200px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 3px;
 }
+.popup {
+  position: relative;
+  left: 50%;
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.popups {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
 
+/* The actual popup */
+.popup .popuptext {
+  visibility: hidden;
+  width: 160px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -80px;
+}
+
+/* Popup arrow */
+.popup .popuptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+.popups .popupleft {
+  visibility: hidden;
+  width: 160px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px 0;
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 190px;
+  margin-left: -80px;
+}
+
+/* .popup .popupleft::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+} */
+
+/* Toggle this class - hide and show the popup */
+.popup .show {
+  visibility: visible;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+}
+.input-textbox {
+  width: 100%;
+  height: auto;
+  min-height: 1em;
+  font-size: 16px;
+  resize: none;
+  border: none;
+  outline: none;
+  overflow: hidden;
+  white-space: pre-wrap;
+}
+
+.text {
+  font-size: 1.5rem;
+}
+
+.grid-img {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px; /* Margin between items */
+}
+
+.input-textarea {
+  flex: 1;
+  padding: 10px;
+}
+
+.image-container {
+  flex: 1;
+}
+
+.image-container img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 /* .popup-overlay {
   background: rgba(0, 0, 0, 0.5);
 }

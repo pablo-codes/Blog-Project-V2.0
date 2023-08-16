@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useCookies } from 'react-cookie'
-import { Navigate, redirect, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import './SignIn.css'
 import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai'
 
