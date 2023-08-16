@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { BiCalendarAlt, BiComment, BiHeart, BiChevronLeft, BiImage } from 'react-icons/bi'
 import { RiLinksLine } from 'react-icons/ri'
 import { BsYoutube } from 'react-icons/bs'
@@ -14,6 +14,26 @@ const Create = () => {
 
     const [value, setValue] = useState('');
     const [height, setHeight] = useState(100)
+
+    const [inputValue, setInputValue] = useState('');
+    const inputRef = useRef(null)
+    // useEffect(() => {
+    //     const input = inputRef.current;
+    //     if (input) {
+    //         const inputWidth = input.offsetWidth - 20; // Subtract padding
+    //         const charWidth = inputWidth / 15; // Assuming an average character width
+    //         const maxChars = Math.floor(inputWidth / charWidth); // Calculate max characters
+
+    //         setInputValue(inputValue.slice(0, maxChars)); // Limit input value
+    //     }
+    // }, [inputValue]);
+
+    const handleInputChange = (event) => {
+        const value = event.target.value
+        console.log(value.length)
+        const newValue = value.slice(0, 650); // Limit input to 20 characters
+        setInputValue(newValue);
+    };
 
     const handleChange = (event) => {
         setValue(event.target.value);
@@ -214,7 +234,7 @@ const Create = () => {
                         <textarea style={{
                             width: '20rem', height: `20rem`, minHeight: '1em', fontSize: '22px',
                             resize: 'none', background: "border-box", border: 'none', outline: 'none', overflowy: 'scroll', whiteSpace: 'pre-wrap'
-                        }} className="input-textarea" placeholder="Enter text"></textarea>
+                        }} className="input-textarea" ref={inputRef} onChange={handleInputChange} value={inputValue} placeholder="Enter text"></textarea>
                         <div className="image-container">
                             <label htmlFor='inpimg'><div className="icon-div" style={{ width: '30rem', height: '20rem', border: '5px dotted', display: 'flex', padding: '0 7rem', marginLeft: '7.5%' }}>
 
@@ -237,26 +257,9 @@ const Create = () => {
                             border: 'none',
                             outline: 'none', overflowy: 'scroll', whiteSpace: 'pre-wrap',
                         }} value={value} onChange={handleChange} onMouseUp={handleTextHighlight} onKeyDown={handleKeyDown} placeholder="Type here..." />
-                    <style>
-                        {`
-          textarea::-webkit-scrollbar {
-            width: 5px;
-          }
-
-          textarea::-webkit-scrollbar-track {
-            background-color: #f1f1f1;
-          }
-
-          textarea::-webkit-scrollbar-thumb {
-            background-color: blue;
-          }
-        `}
-                    </style>
                 </div>
 
             </div>
-            <Input inputnam={inputNam} inputnum={inputNum} />
-
 
         </div>
     )
